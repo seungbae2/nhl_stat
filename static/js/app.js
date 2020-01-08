@@ -1,4 +1,4 @@
 
-d3.json("https://statsapi.web.nhl.com/api/v1/game/2019020541/feed/live").then(function(data){
+d3.json("static/data/result.json").then(function(data){
     console.log(data)
 });
