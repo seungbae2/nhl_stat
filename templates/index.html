@@ -14,8 +14,8 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
-        <h2>{{ data[0].home_team }} vs {{ data[0].away_team }}</h2>
-        <p>{{ data[0].game_date}}</p>
+        <h2>{{ data.home_team }} vs {{ data.away_team }}</h2>
+        <p>{{ data.game_date}}</p>
       </div>
     </div>
     <div class="row">
@@ -40,7 +40,7 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <div id="bubble">
+        <div id="chart">
           <img src = "./static/images/bg-rink.svg" alt="nhl-court">
         </div>
       </div>
