@@ -13,6 +13,8 @@ def summary():
 	home_team = summary_data["gameData"]["teams"]["home"]["name"]
 	away_team = summary_data["gameData"]["teams"]["away"]["name"]
 
+	game_date = game_date.split("T")[0]
+
 	stat_data = {
 		'game_date':game_date,
 		'home_team':home_team,
@@ -52,8 +54,8 @@ def event():
 	        #print(play['result']['event'])
 
 	        if bool(play['coordinates']):
-	            x = play['coordinates']['x']
-	            y = play['coordinates']['y']
+	            x = play['coordinates']['x']+100
+	            y = play['coordinates']['y']+50
 	            #print(play['coordinates']['x'])
 	            #print(play['coordinates']['y'])
 
