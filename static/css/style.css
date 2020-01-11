@@ -1,7 +1,58 @@
-.chart {
-    display: block;
-    margin: 0;
-    background-image: url("../images/bg-rink.png");
-    background-repeat:no-repeat;
-    background-size: inherit;
+body {
+    background-color: rgb(142, 167, 223);
 }
+
+.navbar{
+    max-height: 60px; 
+    background-color: rgb(113, 169, 204);
+    }
+
+    .img-container {
+        text-align: center;
+        display: block;
+    }
+
+.jumbotron {
+    margin-top: 2px;
+    background-image: url("../images/banner.png");
+    background-size:cover;
+    justify-content: flex-start;
+    color: white;
+    font-style: normal;
+    text-align: center;
+    font-weight: bolder;
+    }
+  
+.btn {
+      margin: 10px;
+    }
+
+.panel-title {
+    text-align: center;
+}
+    table{
+            border:1px solid black;
+
+        }
+        table th{
+            border:1px solid black;
+            padding-left: 5px;
+            }
+    table td{
+        border:1px solid black;
+        padding-left: 5px;
+        }
+
+    
+        
+
+.chart {
+        display: block;
+        margin: 0;
+        background-image: url("../images/bg-rink.png");
+        background-repeat:no-repeat;
+        background-size: inherit;
+    }
+
+
+  
