@@ -1,8 +1,7 @@
 $('select').on('change', function() {
-    alert( this.value );
+    //alert( this.value );
+    renderData(event_data, this.value);
 });
-
-
 
 var event_data = [];
 var svgWidth = 1024;
@@ -23,37 +22,51 @@ var svg = d3.select(".chart").append("svg")
 
 d3.json("static/data/result.json").then((data, error) => {
     if (error) throw error;
-    console.log(data);
+    //console.log(data);
     event_data = data;
-
-    init(event_data);
+    
+    renderData(event_data, "all");
 });
+function drawCircle(objSvg, period){
 
-function init(event_data,selectData){
-    console.log(event_data);
+    d3.selectAll("circle").remove();
 
-    tip = d3.tip().attr('class', 'd3-tip').html(function(d) { 
-        return (`${d.event}<br>${d.description}`);
-    })
-
-    svg.call(tip);
-
-    svg.append("g").selectAll("circle")
+    objSvg.append("g").selectAll("circle")
         .data(event_data)
         .enter()
         .filter(function(d){
-            if(d.event == "Goal"){
-                return true;
-            }else if(d.event == "Shot"){
-                return true;
-            }else if(d.event == "Hit"){
-                return true;
-            }else if(d.event == "Penalty"){
-                return true;
-            }else if(d.event == "Blockd Shot"){
-                return true;
+            if(period == 0){
+                if(d.event == "Goal"){
+                    return true;
+                }else if(d.event == "Shot"){
+                    return true;
+                }else if(d.event == "Hit"){
+                    return true;
+                }else if(d.event == "Penalty"){
+                    return true;
+                }else if(d.event == "Blockd Shot"){
+                    return true;
+                }else{
+                    return false;
+                }
             }else{
-                return false;
+                if(d.period == period) {
+                    if(d.event == "Goal"){
+                        return true;
+                    }else if(d.event == "Shot"){
+                        return true;
+                    }else if(d.event == "Hit"){
+                        return true;
+                    }else if(d.event == "Penalty"){
+                        return true;
+                    }else if(d.event == "Blockd Shot"){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }else{
+                    return false;
+                } 
             }
         })
         .append("circle")
@@ -79,7 +92,31 @@ function init(event_data,selectData){
         .attr("r",10)
         .on('mouseover', tip.show)
         .on('mouseout', tip.hide);
-    
+
+    return objSvg;
+}
+
+function renderData(event_data,selectData){
+    //console.log(event_data);
+
+    tip = d3.tip().attr('class', 'd3-tip').html(function(d) { 
+        return (`Event: ${d.event}<br>Team: ${d.name}<br>${d.description}`);
+    })
+
+    svg.call(tip);
+
+    if(selectData == "all"){
+        drawCircle(svg, 0)
+    }else if(selectData == "1st"){
+        drawCircle(svg, 1)
+    }else if(selectData == "2nd"){
+        drawCircle(svg, 2)
+    }else if(selectData == "3rd"){
+        drawCircle(svg, 3)
+    }else if(selectData == "ot"){
+        drawCircle(svg, 4)
+    }
+
 }
 
 d3.json("static/data/game_stat.json").then(function(data){
@@ -117,8 +154,8 @@ d3.json("static/data/game_stat.json").then(function(data){
 
     ///////////////////Face-Off %//////////////
 
-    console.log(bufferData);
-    console.log(bufferData.home_data.faceOffWinPercentage);
+    //console.log(bufferData);
+    //console.log(bufferData.home_data.faceOffWinPercentage);
     var faceoff_trace = {
         labels: [bufferData.home_team, bufferData.away_team],
         values: [bufferData.home_data.faceOffWinPercentage, bufferData.away_data.faceOffWinPercentage],
@@ -169,5 +206,5 @@ d3.json("static/data/game_stat.json").then(function(data){
     };
 
     Plotly.newPlot("hit", hit_data, hit_layout);
-
+    
 });

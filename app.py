@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect
 from flask_pymongo import PyMongo
-import scrape_mars
+import scrape_data
 import requests
 import os
 
@@ -12,31 +12,18 @@ mongo = PyMongo(app, uri = 'mongodb://localhost:27017/nhl_db')
 @app.route("/")
 def home():
 
+	# insert event data to db
 	mongo.db.event_data.remove({})
-	nhl_data = scrape_mars.event()
+	nhl_data = scrape_data.event()
 	mongo.db.event_data.insert_many(nhl_data)
 
+	# insert 
 	mongo.db.stat_summary.remove({})
-	stat = scrape_mars.summary()
-	print(stat)
+	stat = scrape_data.summary()
+	#print(stat)
 	mongo.db.stat_summary.insert(stat)
 
 	return render_template("index.html", data = stat)
-
-
-@app.route("/scrape")
-def scrape():
-
-	mongo.db.collection.remove({})
-	nhl_data = scrape_mars.scrape()
-
-	# for data in nhl_data:
-	# 	mongo.db.collection.insert({}, data)
-
-	mongo.db.collection.insert_many(nhl_data)
-	
-
-	return redirect("/")
 
 
 if __name__ == "__main__":
