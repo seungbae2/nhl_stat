@@ -163,4 +163,28 @@ d3.json("static/data/game_stat.json").then(function(data){
 
     Plotly.newPlot("hit", hit_data, hit_layout);
 
+    ////////////////////Table///////////////////////////
+    var tableData = data;
+
+    // YOUR CODE HERE!
+    var tbody = d3.select("panel-body");
+    
+    // Initialize table
+    tableData.forEach((ufo) => {
+        var row = tbody.append("tr");
+        Object.entries(ufo).forEach(([key,value]) => {
+            var cell = row.append("td");
+            cell.text(value);
+        });
+    });
+    filteredData.forEach((ufo) => {
+        var row = tbody.append("tr");
+        
+        Object.entries(ufo).forEach(([key,value]) => {
+        var cell = row.append("td");
+        cell.text(value);
+        });
+    });
+    alert("Total "+ filteredData.length +" datas found!")
+    
 });

@@ -28,6 +28,58 @@
             <h3 class="panel-title">Team Stats</h3>
           </div>
           <div id="sample-metadata" class="panel-body"></div>
+          <table style="width:100%">
+            <tr>
+              <th>Team Stats</th>
+              <th>{{ data.home_team }} </th>
+              <th>{{ data.away_team }}</th>
+            </tr>
+            <tr>
+              <td>Goals</td>
+              <td>{{ data.home_team.goals }}</td>
+              <td>{{ data.away_team.goals }}</td>
+            </tr>
+            <tr>
+              <td>Shots</td>
+              <td>{{ data.home_team.shots }}</td>
+              <td>{{ data.away_team.shots }}</td>
+            </tr>
+            <tr>
+              <td>Hits</td>
+              <td>{{ data.home_team.hits }}</td>
+              <td>{{ data.away_team.hits }}</td>
+            </tr>
+            <tr>
+              <td>Penalty Minutes</td>
+              <td>{{ data.home_team.pim }}</td>
+              <td>{{ data.away_team.pim }}</td>
+            </tr>
+            <tr>
+              <td>Power Play Percentage</td>
+              <td>{{ data.home_team.powerPlayPercentage }}</td>
+              <td>{{ data.away_team.powerPlayPercentage }}</td>
+            </tr>
+            <tr>
+              <td>Face Off Win Percentage</td>
+              <td>{{ data.home_team.faceOffWinPercentage }}</td>
+              <td>{{ data.away_team.faceOffWinPercentage }}</td>
+            </tr>
+            <tr>
+              <td>Shots Blocked</td>
+              <td>{{ data.home_team.blocked }}</td>
+              <td>{{ data.away_team.blocked }}</td>
+            </tr>
+            <tr>
+              <td>Takeaways</td>
+              <td>{{ data.home_team.takeaways }}</td>
+              <td>{{ data.away_team.takeaways }}</td>
+            </tr>
+            <tr>
+              <td>Giveaways</td>
+              <td>{{ data.home_team.giveaways }}</td>
+              <td>{{ data.away_team.giveaways }}</td>
+            </tr>
+          </table> 
         </div>
       </div>
     </div>
