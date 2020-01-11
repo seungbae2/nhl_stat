@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="./static/css/style.css">
   <link rel="stylesheet" href="./static/css/d3Style.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -40,14 +40,24 @@
       </div>
       <div class="col-md-4">
         <div id="hit"></div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="chart">
-        <!-- <img src="./static/images/bg-rink.svg" z-index="-1"/> -->
       </div>
     </div>
+    <br><br><br>
+    <div class="row">
+      
+      <br>
+      <div class="col-md-12">
+        <select name="pets" id="pet-select">
+          <option value="all">All Periods</option>
+          <option value="1st">1st Period</option>
+          <option value="2nd">2nd Period</option>
+          <option value="3rd">3rd Period</option>
+          <option value="ot">OT</option>
+        </select>
+        <div class="chart">
+          <!-- <img src="./static/images/bg-rink.svg" z-index="-1"/> -->
+        </div>
+      </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>

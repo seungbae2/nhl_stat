@@ -1,6 +1,12 @@
+$('select').on('change', function() {
+    alert( this.value );
+});
+
+
+
 var event_data = [];
-var svgWidth = 1000;
-var svgHeight = 500;
+var svgWidth = 1024;
+var svgHeight = 436;
 
 var margin = {
   top: 20,
@@ -20,10 +26,10 @@ d3.json("static/data/result.json").then((data, error) => {
     console.log(data);
     event_data = data;
 
-    init();
+    init(event_data);
 });
 
-function init(){
+function init(event_data,selectData){
     console.log(event_data);
 
     tip = d3.tip().attr('class', 'd3-tip').html(function(d) { 
@@ -51,6 +57,7 @@ function init(){
             }
         })
         .append("circle")
+        .style("fill-opacity", "0.75")
         .style("stroke", "black")
         .style("fill", function(d){
             var color;
@@ -67,8 +74,8 @@ function init(){
             }
             return color;
         })
-        .attr("cx", d => 4*(d.x))
-        .attr("cy", d => 4*(d.y))
+        .attr("cx", d => 5*(d.x))
+        .attr("cy", d => 4.3*(d.y))
         .attr("r",10)
         .on('mouseover', tip.show)
         .on('mouseout', tip.hide);
